@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Show model attributes in files
+gem 'annotate'
 # Parse CSV file
 gem 'roo'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
