@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624211805) do
+ActiveRecord::Schema.define(version: 20150624223427) do
 
   create_table "vehicles", force: :cascade do |t|
-    t.text     "vsn_pattern"
+    t.string   "vsn_pattern"
     t.integer  "trim_id"
     t.integer  "year"
     t.string   "make"
