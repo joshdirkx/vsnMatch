@@ -27,4 +27,34 @@ class Vehicle < ActiveRecord::Base
       vehicle_information.save
     end
   end
+
+  def vsn_format_valid?
+    # self.vsn_length_check
+
+    vsn_pattern_split = self.vsn_pattern.split('')
+    # check if VSN indexes 0-5 are letters
+    vsn_pattern_split_characters = vsn_pattern_split[0..5]
+    vsn_pattern_split_characters.each do |i|
+      if i =~ /[a-zA-Z]/ || i == '*'
+        print 'yes'
+      else
+        print 'no'
+      end
+    end
+    # check if VSN indexes 6-11 are integers
+    vsn_pattern_split_integers = vsn_pattern_split[6..11]
+    vsn_pattern_split_integers.each do |i|
+      if i =~ /\d/ || i == '*'
+        print 'yes'
+      else
+        print 'no'
+      end
+    end
+  end
 end
+
+# def vsn_length_check
+#   # check if VSN is 12 characters long
+#   self.vsn_pattern.length == 12 ? true : false
+# end
+# end
