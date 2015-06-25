@@ -1,8 +1,7 @@
 class VehiclesController < ApplicationController
   def search
-  end
-
-  def results
+    @results = Vehicle.where("vsn_pattern LIKE ?", "%#{params[:search]}%")
+    # redirect_to vehicles_results_path
   end
 
   def landing

@@ -1,2 +1,12 @@
-<h1>Vehicles#landing</h1>
-<p>Find me in app/views/vehicles/landing.html.erb</p>
+<h1>Let's Find a Car</h1>
+<p>Enter a VSN to begin your search</p>
+
+<!-- Verify VSN is correct format by jQuery? -->
+
+<!-- <input type="text" name="params[vsn_search_input]"> -->
+<%#= button_to 'Search!', vehicles_search_path, method: :post %>
+
+<%= form_tag(vehicles_search_path, :method => "post", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Vehicles" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>

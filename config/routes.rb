@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'vehicles/search'
-
-  get 'vehicles/results'
+  post 'vehicles/search'
 
   get 'vehicles/landing'
 

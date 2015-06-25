@@ -1,2 +1,31 @@
-<h1>Vehicles#search</h1>
-<p>Find me in app/views/vehicles/search.html.erb</p>
+<h1>Results for Query: <%= params[:search] %></h1>
+<p>We found <%= @results.count %> results</p>
+
+<div>
+	<table>
+		<th>
+			Results
+		</th>
+
+		<tr>
+			<td>ID</td>
+			<td>VSN</td>
+		</tr>
+
+		<% @results.each do |i| %>
+			<tr>
+				<td><%= i.id %></td>
+				<td><%= i.vsn_pattern %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<br/>
+
+<h3>Most Likely Result:</h3>
+
+
+
+<br/>
+<%= link_to 'Search Again', root_path %>
