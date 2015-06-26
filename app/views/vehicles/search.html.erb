@@ -1,9 +1,13 @@
 <h1>Results for Query: <%= params[:search] %></h1>
 
+<h3>Most Likely:</h3>
+
+<%#+ @most_likely_option %>
+
 <div>
 	<table>
 		<th>
-			We found <%= @results.count %> results
+			Not right? We found <%= @results.count %> total options
 		</th>
 
 		<tr>
@@ -29,12 +33,6 @@
 		<% end %>
 	</table>
 </div>
-
-<br/>
-
-<h3>Most Likely Result:</h3>
-
-
 
 <br/>
 <%= link_to 'Search Again', root_path %>
