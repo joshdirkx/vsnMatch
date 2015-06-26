@@ -95,8 +95,9 @@ class Vehicle < ActiveRecord::Base
     return Vehicle.find(best_match_id)
   end
 
-  def self.car_search(search_pattern, start_count, array_of_items)
+  def self.car_search(search_pattern, start_count=0, array_of_items=Array.new(Vehicle.all))
     # resursively search VSN_PATTERN against user query
+    # begin with array of all vehicles and a counter set to zero
     pattern = search_pattern
     counter = start_count
     objects = array_of_items
