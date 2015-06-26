@@ -4,7 +4,15 @@ class VehiclesController < ApplicationController
   def search
     pattern = params[:search]
 
-    @results = Vehicle.where("vsn_pattern LIKE :pattern", pattern: "#{pattern}%")
+    cars = []
+
+    Vehicle.all.each do |i|
+      cars.push(i)
+    end
+
+    @results = Vehicle.car_search(params[:search], 0, cars)
+
+    # @results = Vehicle.where("vsn_pattern LIKE :pattern", pattern: "#{pattern}%")
   end
 
   def landing
