@@ -11,8 +11,6 @@ class VehiclesController < ApplicationController
     end
 
     @results = Vehicle.car_search(params[:search], 0, cars)
-
-    # @results = Vehicle.where("vsn_pattern LIKE :pattern", pattern: "#{pattern}%")
   end
 
   def landing
