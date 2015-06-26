@@ -1,21 +1,30 @@
 <h1>Results for Query: <%= params[:search] %></h1>
-<p>We found <%= @results.count %> results</p>
 
 <div>
 	<table>
 		<th>
-			Results
+			We found <%= @results.count %> results
 		</th>
 
 		<tr>
-			<td>ID</td>
-			<td>VSN</td>
+			<td>Inventory ID</td>
+			<td>VSN Pattern</td>
+			<td>Trim ID</td>
+			<td>Year</td>
+			<td>Make</td>
+			<td>Model</td>
+			<td>Trim Name</td>
 		</tr>
 
 		<% @results.each do |i| %>
 			<tr>
 				<td><%= i.id %></td>
 				<td><%= i.vsn_pattern %></td>
+				<td><%= i.trim_id %></td>
+				<td><%= i.year %></td>
+				<td><%= i.make %></td>
+				<td><%= i.model %></td>
+				<td><%= i.trim_name %></td>
 			</tr>
 		<% end %>
 	</table>
