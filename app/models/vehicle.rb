@@ -28,48 +28,6 @@ class Vehicle < ActiveRecord::Base
     end
   end
 
-  # def vsn_format_valid?
-  #   self.vsn_length_check
-
-  #   self.vsn_first_half_check
-
-  #   self.vsn_second_half_check
-  # end
-
-
-  # def vsn_length_check
-  #   # check if 12 characters long
-  #   self.length == 12 ? true : false
-  # end
-
-  # def vsn_first_half_check
-  #   # Check if index 0-5 are characters
-  #   vsn_characters = self.split('')[0..5]
-
-  #   vsn_characters.each do |i|
-  #     i =~ /[a-zA-Z]/ || i == '*' ? true : false
-  #     # if i =~ /[a-zA-Z]/ || i == '*'
-  #     #   print 'yes'
-  #     # else
-  #     #   print 'no'
-  #     # end
-  #   end
-  # end
-
-  # def vsn_second_half_check
-  #   # Check if index 6-11 are integers
-  #   vsn_integers = self.split('')[6..11]
-
-  #   vsn_integers.each do |i|
-  #     i =~ /\d/ || i == '*' ? true : false
-  #     # if i =~ /\d/ || i == '*'
-  #     #   print 'yes'
-  #     # else
-  #     #   print 'no'
-  #     # end
-  #   end
-  # end
-
   def self.most_specific_vsn_match(search_results)
     results = search_results
 
@@ -87,12 +45,11 @@ class Vehicle < ActiveRecord::Base
       paired_results[i.id] = wildcard_count
     end
 
-    # returns results as an array of arrays, sorted by values in ascending order
-    paired_results.sort_by { |k,v| v }
+    # find minimum wildcard value(s) from hash
+    minimum_wildcard_count = paired_results.values.min
 
-    best_match_id = paired_results[0][0].to_i
-
-    return Vehicle.find(best_match_id)
+    # select all from results where value is equal to minimum
+    return Hash[paired_results.select { |k, v| v == minimum_wildcard_count }]
   end
 
   def self.car_search(search_pattern, start_count=0, array_of_items=Array.new(Vehicle.all))

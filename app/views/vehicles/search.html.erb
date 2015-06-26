@@ -1,14 +1,30 @@
 <h1>Results for Query: <%= params[:search] %></h1>
 
-<h3>Most Likely:</h3>
-
-<%#+ @most_likely_option %>
-
 <div>
 	<table>
-		<th>
-			Not right? We found <%= @results.count %> total options
-		</th>
+		<% if @found_match == true %>
+			<th>
+				Most Specific Result
+			</th>
+
+			<tr>
+				<td><%= @most_likely_match.id %></td>
+				<td><%= @most_likely_match.vsn_pattern %></td>
+				<td><%= @most_likely_match.trim_id %></td>
+				<td><%= @most_likely_match.year %></td>
+				<td><%= @most_likely_match.make %></td>
+				<td><%= @most_likely_match.model %></td>
+				<td><%= @most_likely_match.trim_name %></td>
+			</tr>
+
+			<th>
+				We found <%= @results.count %> total options
+			</th>
+		<% else %>
+			<th>
+				We found a few choices, <%= @results.count %> to be exact
+			</th>
+		<% end %>
 
 		<tr>
 			<td>Inventory ID</td>
