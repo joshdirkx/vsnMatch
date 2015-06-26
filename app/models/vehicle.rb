@@ -28,33 +28,95 @@ class Vehicle < ActiveRecord::Base
     end
   end
 
-  def vsn_format_valid?
-    # self.vsn_length_check
+  # def vsn_format_valid?
+  #   self.vsn_length_check
 
-    vsn_pattern_split = self.vsn_pattern.split('')
-    # check if VSN indexes 0-5 are letters
-    vsn_pattern_split_characters = vsn_pattern_split[0..5]
-    vsn_pattern_split_characters.each do |i|
-      if i =~ /[a-zA-Z]/ || i == '*'
-        print 'yes'
-      else
-        print 'no'
+  #   self.vsn_first_half_check
+
+  #   self.vsn_second_half_check
+  # end
+
+
+  # def vsn_length_check
+  #   # check if 12 characters long
+  #   self.length == 12 ? true : false
+  # end
+
+  # def vsn_first_half_check
+  #   # Check if index 0-5 are characters
+  #   vsn_characters = self.split('')[0..5]
+
+  #   vsn_characters.each do |i|
+  #     i =~ /[a-zA-Z]/ || i == '*' ? true : false
+  #     # if i =~ /[a-zA-Z]/ || i == '*'
+  #     #   print 'yes'
+  #     # else
+  #     #   print 'no'
+  #     # end
+  #   end
+  # end
+
+  # def vsn_second_half_check
+  #   # Check if index 6-11 are integers
+  #   vsn_integers = self.split('')[6..11]
+
+  #   vsn_integers.each do |i|
+  #     i =~ /\d/ || i == '*' ? true : false
+  #     # if i =~ /\d/ || i == '*'
+  #     #   print 'yes'
+  #     # else
+  #     #   print 'no'
+  #     # end
+  #   end
+  # end
+
+  def self.most_specific_vsn_match(search_results)
+    results = search_results
+
+    paired_results = Hash.new
+
+    results.each do |i|
+      wildcard_count = 0
+
+      for char in i.vsn_pattern.split('')
+        if char == '*'
+          wildcard_count += 1
+        end
       end
+
+      paired_results[i.id] = wildcard_count
     end
-    # check if VSN indexes 6-11 are integers
-    vsn_pattern_split_integers = vsn_pattern_split[6..11]
-    vsn_pattern_split_integers.each do |i|
-      if i =~ /\d/ || i == '*'
-        print 'yes'
-      else
-        print 'no'
-      end
+
+    # returns results as an array of arrays, sorted by values in ascending order
+    paired_results.sort_by { |k,v| v }
+
+    best_match_id = paired_results[0][0].to_i
+
+    return Vehicle.find(best_match_id)
+  end
+
+  def self.car_search(search_pattern, start_count, array_of_items)
+    # resursively search VSN_PATTERN against user query
+    pattern = search_pattern
+    counter = start_count
+    objects = array_of_items
+
+    # base case, break and return objects when counter equals search length
+    return objects if counter == pattern.length
+
+    # begin pattern matching
+    if pattern[counter] == '*'
+      # if pattern is wildcard, move on
+      # increase counter, call function again
+      counter += 1
+      Vehicle.car_search(pattern, counter, objects)
+    else
+      # delete object from results if it does not match character in pattern and it is not a wildcard
+      objects.delete_if { |c| c.vsn_pattern[counter] != '*' && c.vsn_pattern[counter] != pattern[counter]}
+      # if pattern is wildcard, move on
+      # increase counter, call function again
+      counter += 1
+      Vehicle.car_search(pattern, counter, objects)
     end
   end
 end
-
-# def vsn_length_check
-#   # check if VSN is 12 characters long
-#   self.vsn_pattern.length == 12 ? true : false
-# end
-# end
