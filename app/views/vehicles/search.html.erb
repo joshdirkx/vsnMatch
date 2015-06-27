@@ -5,15 +5,17 @@
       <th>
         Most Specific Result
 	  </th>
-      <tr>
-        <td><%= @most_likely_match.id %></td>
-        <td><%= @most_likely_match.vsn_pattern %></td>
-        <td><%= @most_likely_match.trim_id %></td>
-        <td><%= @most_likely_match.year %></td>
-        <td><%= @most_likely_match.make %></td>
-        <td><%= @most_likely_match.model %></td>
-        <td><%= @most_likely_match.trim_name %></td>
-      </tr>
+      <% @best_match.each do |match| %>
+        <tr>
+          <td><%= match.id %></td>
+          <td><%= match.vsn_pattern %></td>
+          <td><%= match.trim_id %></td>
+          <td><%= match.year %></td>
+          <td><%= match.make %></td>
+          <td><%= match.model %></td>
+          <td><%= match.trim_name %></td>
+        </tr>
+      <% end %>
       <th>
         We found <%= @results.count %> total options
 	  </th>
