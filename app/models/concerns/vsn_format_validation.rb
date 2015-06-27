@@ -1,33 +1,52 @@
 module VSN_Format_Validation
-  def vsn_format_valid?
-    self.vsn_length_check
+  extend ActiveSupport::Concern
 
-    self.vsn_first_half_check
+  def vsn_format_valid(input)
+    query = input
 
-    self.vsn_second_half_check
+    vsn_length_check(query)
+
+    vsn_first_half_check(query)
+
+    vsn_second_half_check(query)
   end
 
 
-  def vsn_length_check
+  def vsn_length_check(input)
+    query = input
     # check if 12 characters long
-    self.length == 12 ? true : false
+    query.length == 12 ? true : false
   end
 
-  def vsn_first_half_check
-    # Check if index 0-5 are characters
-    vsn_characters = self.split('')[0..5]
+  def vsn_first_half_check(input)
+    query = input
+    # check if index 0-5 are characters
+    vsn_characters = query.split('')[0..5]
 
     vsn_characters.each do |i|
-      i =~ /[a-zA-Z]/ || i == '*' ? true : false
+      if i =~ /[a-zA-Z]/ || i == '*'
+        next
+      else
+        return false
+      end
     end
+
+    return true
   end
 
-  def vsn_second_half_check
-    # Check if index 6-11 are integers
-    vsn_integers = self.split('')[6..11]
+  def vsn_second_half_check(input)
+    query = input
+    # check if index 6-11 are integers
+    vsn_integers = query.split('')[6..11]
 
     vsn_integers.each do |i|
-      i =~ /\d/ || i == '*' ? true : false
+      if i =~ /[\d]/ || i == '*'
+        next
+      else
+        return false
+      end
     end
+
+    return true
   end
 end
