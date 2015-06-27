@@ -1,54 +1,48 @@
 <h1>Results for Query: <%= params[:search] %></h1>
-
 <div>
-	<table>
-		<% if @found_match == true %>
-			<th>
-				Most Specific Result
-			</th>
-
-			<tr>
-				<td><%= @most_likely_match.id %></td>
-				<td><%= @most_likely_match.vsn_pattern %></td>
-				<td><%= @most_likely_match.trim_id %></td>
-				<td><%= @most_likely_match.year %></td>
-				<td><%= @most_likely_match.make %></td>
-				<td><%= @most_likely_match.model %></td>
-				<td><%= @most_likely_match.trim_name %></td>
-			</tr>
-
-			<th>
-				We found <%= @results.count %> total options
-			</th>
-		<% else %>
-			<th>
-				We found a few choices, <%= @results.count %> to be exact
-			</th>
-		<% end %>
-
-		<tr>
-			<td>Inventory ID</td>
-			<td>VSN Pattern</td>
-			<td>Trim ID</td>
-			<td>Year</td>
-			<td>Make</td>
-			<td>Model</td>
-			<td>Trim Name</td>
-		</tr>
-
-		<% @results.each do |i| %>
-			<tr>
-				<td><%= i.id %></td>
-				<td><%= i.vsn_pattern %></td>
-				<td><%= i.trim_id %></td>
-				<td><%= i.year %></td>
-				<td><%= i.make %></td>
-				<td><%= i.model %></td>
-				<td><%= i.trim_name %></td>
-			</tr>
-		<% end %>
-	</table>
+  <table>
+    <% if @found_match == true %>
+      <th>
+        Most Specific Result
+	  </th>
+      <tr>
+        <td><%= @most_likely_match.id %></td>
+        <td><%= @most_likely_match.vsn_pattern %></td>
+        <td><%= @most_likely_match.trim_id %></td>
+        <td><%= @most_likely_match.year %></td>
+        <td><%= @most_likely_match.make %></td>
+        <td><%= @most_likely_match.model %></td>
+        <td><%= @most_likely_match.trim_name %></td>
+      </tr>
+      <th>
+        We found <%= @results.count %> total options
+	  </th>
+    <% else %>
+      <th>
+        We found a few choices, <%= @results.count %> to be exact
+	  </th>
+    <% end %>
+    <tr>
+      <td>Inventory ID</td>
+      <td>VSN Pattern</td>
+      <td>Trim ID</td>
+      <td>Year</td>
+      <td>Make</td>
+      <td>Model</td>
+      <td>Trim Name</td>
+    </tr>
+    <% @results.each do |i| %>
+      <tr>
+        <td><%= i.id %></td>
+        <td><%= i.vsn_pattern %></td>
+        <td><%= i.trim_id %></td>
+        <td><%= i.year %></td>
+        <td><%= i.make %></td>
+        <td><%= i.model %></td>
+        <td><%= i.trim_name %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
-
 <br/>
 <%= link_to 'Search Again', root_path %>
