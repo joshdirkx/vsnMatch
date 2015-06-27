@@ -2,12 +2,10 @@ class VehiclesController < ApplicationController
   include VSN_Format_Validation
 
   def search
-    # if vsn_length_check(params[:search]) && vsn_first_half_check(params[:search]) && vsn_second_half_check(params[:search])
-
-    # else
-    #   flash[:notice] = 'Incorrect Format'
-    #   redirect_to root_path
-    # end
+    unless vsn_length_check(params[:search]) && vsn_first_half_check(params[:search]) && vsn_second_half_check(params[:search])
+      flash[:notice] = 'Incorrect Format'
+      redirect_to root_path
+    end
 
     @found_match = nil
 
@@ -27,16 +25,6 @@ class VehiclesController < ApplicationController
         @found_match = true
       end
     end
-    # if @most_likely_match.count == 1
-    # 	@most_likely_match = Vehicle.find(@most_likely_match.first[0])
-    # 	@found_match = true
-    # 	els
-    # if @most_likely_match.count == 1
-    #   @most_likely_match = Vehicle.find(@most_likely_match.first[0])
-    #   @found_match = true
-    # else
-    #   @found_match = false
-    # end
   end
 
   def landing
