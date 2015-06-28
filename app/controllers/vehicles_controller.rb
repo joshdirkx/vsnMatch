@@ -9,8 +9,6 @@ class VehiclesController < ApplicationController
 
     @found_match = nil
 
-    pattern = params[:search]
-
     @results = Vehicle.car_search(params[:search])
 
     car_match_id_hash = Vehicle.most_specific_vsn_match(@results)
