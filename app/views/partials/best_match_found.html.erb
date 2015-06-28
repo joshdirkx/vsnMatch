@@ -1,22 +1,24 @@
 <table>
-  <th>
-    Most Specific Result
-	  </th>
-  <% @best_match.each do |match| %>
-    <tr>
-      <td><%= match.id %></td>
-      <td><%= match.vsn_pattern %></td>
-      <td><%= match.trim_id %></td>
-      <td><%= match.year %></td>
-      <td><%= match.make %></td>
-      <td><%= match.model %></td>
-      <td><%= match.trim_name %></td>
-    </tr>
-  <% end %>
+  <tbody class="best-match-results">
+    <th>
+      Most Specific Result
+	</th>
+    <% @best_match.each do |match| %>
+      <tr>
+        <td><%= match.id %></td>
+        <td><%= match.vsn_pattern %></td>
+        <td><%= match.trim_id %></td>
+        <td><%= match.year %></td>
+        <td><%= match.make %></td>
+        <td><%= match.model %></td>
+        <td><%= match.trim_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
   <th  id='expand'>
     We found <%= @results.count %> total options, click to see them
-      </th>
-  <tbody style='display:none' id='options'>
+  </th>
+  <tbody style='display:none' id='options' class='expanded-query-results'>
     <tr>
       <td>Inventory ID</td>
       <td>VSN Pattern</td>

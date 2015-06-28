@@ -13,3 +13,297 @@
  *= require_tree .
  *= require_self
  */
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+/* change colours to suit your needs */
+
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+/* change colours to suit your needs */
+
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* change border colour to suit your needs */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+input,
+select {
+    vertical-align: middle;
+}
+/* End HTML5 Reset */
+
+* {
+    font-family: 'Courier New';
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #D3D5D6;
+}
+
+.page-container {
+    width: 100%;
+    text-align: center;
+}
+
+.title-container {
+    padding-top: 4em;
+    padding-right: 12em;
+    padding-left: 12em;
+    padding-bottom: 2em;
+    border-bottom: .15em solid #788999;
+    margin-bottom: 2em;
+}
+
+.header,
+.query-header {
+    color: #788999;
+    font-weight: bold;
+    font-size: 4em;
+}
+
+.query-header {
+    font-size: 3em;
+}
+
+.header-subtext {
+    letter-spacing: .2em;
+}
+
+.flash-notice {
+    margin: 2em;
+}
+
+.search-form-input {
+    text-align: left;
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-top: .6em;
+    padding-bottom: .6em;
+    letter-spacing: .2em;
+}
+
+.countdown {
+    padding-bottom: .5em;
+}
+
+.search-submit,
+.return-home:link,
+.return-home:visited {
+    border-radius: 4em;
+    padding: 1em 1.8em;
+    background-color: #545D5D;
+    color: white;
+    margin-top: 1em;
+    border: 0 none;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.search-submit:hover,
+.return-home:hover {
+    background-color: #5C6C6D;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 0px;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    font-size: 1.2em;
+    color: #788999;
+    font-weight: 500;
+}
+
+.expanded-query-results tr:nth-child(odd),
+.best-match-results tr:nth-child(even),
+.query-results-all tr:nth-child(even) {
+    background-color: #D8DBDA;
+}
+
+.return-home {
+    font-size: .7em;
+    text-decoration: none;
+}

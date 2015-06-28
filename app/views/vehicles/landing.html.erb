@@ -1,11 +1,28 @@
-<h1>Let's Find a Car</h1>
-<p>Enter a VSN to begin your search</p>
-<%= flash[:notice] %>
-<%= form_tag(vehicles_search_path, :method => "post", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Vehicles" %>
-  <%= submit_tag "Search", :name => nil %>
-  <span id="countdown"></span>
-<% end %>
+<!-- Page Title -->
+<div class="page-container">
+  <div class="title-container">
+    <div class="header">
+      find a car
+  </div>
+    <div class="header-subtext">
+      Enter a VSN to begin
+  </div>
+  </div>
+  <!-- Flash Notice Holder -->
+  <div class="flash-notice-container">
+    <div class="flash-notice">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  <!-- Search Form -->
+  <div class="search-form">
+    <%= form_tag(vehicles_search_path, :method => "post", id: "search-form") do %>
+      <span class="countdown" id="countdown"></span><br/>
+      <%= text_field_tag :search, params[:search], placeholder: "SEARCH VEHICLES", :class => 'search-form-input', :autocomplete => :off%><br/>
+      <%= submit_tag "Search", :class => 'search-submit', :name => nil %>
+    <% end %>
+  </div>
+</div>
 <script type="text/javascript">
   	$(document).ready(function($) {
       	function updateCountdown() {
