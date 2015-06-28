@@ -1,3 +1,0 @@
-== TrueCar Assignment
-
-# Install
