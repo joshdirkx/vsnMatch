@@ -7,9 +7,14 @@ class VehiclesController < ApplicationController
       redirect_to root_path
     end
 
-    @found_match = nil
-
     @results = Vehicle.car_search(params[:search])
+
+    unless @results.length > 0
+      flash[:notice] = 'Your query returned no results'
+      redirect_to root_path
+    end
+
+    @found_match = nil
 
     car_match_id_hash = Vehicle.most_specific_vsn_match(@results)
 
