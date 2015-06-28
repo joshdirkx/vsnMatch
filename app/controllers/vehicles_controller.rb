@@ -4,14 +4,14 @@ class VehiclesController < ApplicationController
   def search
     unless vsn_length_check(params[:search]) && vsn_first_half_check(params[:search]) && vsn_second_half_check(params[:search])
       flash[:notice] = 'Incorrect Format'
-      redirect_to root_path
+      redirect_to root_path and return
     end
 
     @results = Vehicle.car_search(params[:search])
 
     if @results.length == 0
       flash[:notice] = 'Your query returned no results'
-      redirect_to root_path
+      redirect_to root_path and return
     end
 
     @found_match = nil
