@@ -1,4 +1,4 @@
-== TrueCar Assignment
+#TrueCar Assignment
 
 To install, clone down the repository (git clone https://github.com/joshdirkx/vsnmatch) and run bundle install to required gems with dependencies. Then, launch the rails console (rails c) and run the command to seed the database (Vehicle.seed_vehicle_information(‘vsn_data_noheader.csv’). Launch the server (rails s) and head to localhost:3000!
 
