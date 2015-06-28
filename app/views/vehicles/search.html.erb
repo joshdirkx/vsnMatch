@@ -1,83 +1,18 @@
 <h1>Results for Query: <%= params[:search] %></h1>
 <div>
-  <table>
-    <% if @found_match == true %>
-      <th>
-        Most Specific Result
-	  </th>
-      <% @best_match.each do |match| %>
-        <tr>
-          <td><%= match.id %></td>
-          <td><%= match.vsn_pattern %></td>
-          <td><%= match.trim_id %></td>
-          <td><%= match.year %></td>
-          <td><%= match.make %></td>
-          <td><%= match.model %></td>
-          <td><%= match.trim_name %></td>
-        </tr>
-      <% end %>
-      <th  id='expand'>
-        We found <%= @results.count %> total options, click to see them
-      </th>
-    <% else %>
-      <th>
-        We found a few choices, <%= @results.count %> to be exact
-	  </th>
-    <% end %>
-    <% if @found_match == true %>
-      <tbody style='display:none' id='options'>
-        <tr>
-          <td>Inventory ID</td>
-          <td>VSN Pattern</td>
-          <td>Trim ID</td>
-          <td>Year</td>
-          <td>Make</td>
-          <td>Model</td>
-          <td>Trim Name</td>
-        </tr>
-        <% @results.each do |i| %>
-          <tr>
-            <td><%= i.id %></td>
-            <td><%= i.vsn_pattern %></td>
-            <td><%= i.trim_id %></td>
-            <td><%= i.year %></td>
-            <td><%= i.make %></td>
-            <td><%= i.model %></td>
-            <td><%= i.trim_name %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    <% else %>
-      <tr>
-        <td>Inventory ID</td>
-        <td>VSN Pattern</td>
-        <td>Trim ID</td>
-        <td>Year</td>
-        <td>Make</td>
-        <td>Model</td>
-        <td>Trim Name</td>
-      </tr>
-      <% @results.each do |i| %>
-        <tr>
-          <td><%= i.id %></td>
-          <td><%= i.vsn_pattern %></td>
-          <td><%= i.trim_id %></td>
-          <td><%= i.year %></td>
-          <td><%= i.make %></td>
-          <td><%= i.model %></td>
-          <td><%= i.trim_name %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </table>
+  <% if @found_match == true %>
+    <%= render :file => 'partials/best_match_found' %>
+  <% else %>
+    <%= render :file => 'partials/no_best_match_found' %>
+  <% end %>
 </div>
 <br/>
 <%= link_to 'Search Again', root_path %>
 <script type="text/javascript">
   $(document).ready(function() {
-  	$("#expand").click(function () {
+    $("#expand").click(function () {
       $("#options").stop().slideToggle(2000);
       return false;
-  	});
+    });
   });
 </script>
