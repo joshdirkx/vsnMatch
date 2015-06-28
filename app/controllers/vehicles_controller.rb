@@ -9,7 +9,7 @@ class VehiclesController < ApplicationController
 
     @results = Vehicle.car_search(params[:search])
 
-    unless @results.length > 0
+    if @results.length == 0
       flash[:notice] = 'Your query returned no results'
       redirect_to root_path
     end
